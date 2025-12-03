@@ -1,4 +1,4 @@
-
+<b>Marcel Döbbel</b>
 name: Python Tests
 
 on:
@@ -18,7 +18,7 @@ jobs:
     - name: Python installieren
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: '3.14.1'
         
     - name: Dependencies installieren
       run: |
