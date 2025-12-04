@@ -10,7 +10,7 @@ TC04  Adipositas              100,00    1.75    32,7  gÄk4
 """
 class TestÄKBMI:
     """Test für fir ÄK der BMI Kategorieren (TC01 -TC04)"""
-    def test_tc01_adipositas(self):
+    def test_tc01_untergewicht(self):
         """TC01 : Untergewicht - repräsentant für gÄK1"""
         kategorie = kategorisiere_bmi(14.7)
         assert kategorie == "Untergewicht"
@@ -57,21 +57,31 @@ class TestGrenzwertBMI:
 
 class TestBerechnungBMI:
     """Tests for die BMI-Berechnung aus TC01 - TC04"""
+
     def test_tc01_berechnung_untergewicht(self):
+        """TC01 : Berechnung - 45kg / 1.75m = 14.7"""
         bmi = berechne_bmi(45.00,1.75)
         assert bmi == 14.7
+
     def test_tc01_berechnung_normalgewicht(self):
+        """TC02 : Berechnung - 70kg / 1.75m = 22.9"""
         bmi = berechne_bmi(70.00,1.75)
         assert bmi == 22.9
+
     def test_tc01_berechnung_ubergewicht(self):
+        """TC03 : Berechnung - 85kg / 1.75m = 27.8"""
         bmi = berechne_bmi(85.00,1.75)
         assert bmi == 27.8
+
     def test_tc01_berechnung_adipositas(self):
+        """TC04 : Berechnung - 100kg / 1.75m = 32.7"""
         bmi = berechne_bmi(100.00,1.75)
         assert bmi == 32.7
 
+
 class TestEingabevalidierung:
     """Tests für ungültige Eingabewerte (TC09 - TC13)"""
+    
     def test_tc09_gewicht_null(self):
         """TC09: Gewicht = 0 (ungültig) - Grenze bei 0"""
         with pytest.raises(ValueError, match="Gewicht muss größer als 0 sein"):
